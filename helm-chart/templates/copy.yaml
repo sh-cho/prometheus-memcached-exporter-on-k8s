@@ -23,7 +23,7 @@ spec:
           image: prom/memcached-exporter:v0.11.3
           imagePullPolicy: IfNotPresent
           ports:
-            - name: metrics
+            - name: metrics0_{{ .host }}
               containerPort: 9150
               protocol: TCP
           args:
@@ -40,7 +40,7 @@ metadata:
 spec:
   ports:
     - port: 9151
-      targetPort: metrics
+      targetPort: metrics0_{{ .host }}
       protocol: TCP
       name: metrics
   type: ClusterIP
