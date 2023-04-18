@@ -1,0 +1,49 @@
+{{- range .Values.memcachedList }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "prometheus-memcached-exporter.short-name" $ }}-{{ (split "." .host)._0 }}-{{ .port }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "prometheus-memcached-exporter.labels" $ | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "prometheus-memcached-exporter.selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      labels:
+        {{- include "prometheus-memcached-exporter.labels" $ | nindent 8 }}
+        prometheus-exporter/host-and-port: "{{ .host }}_{{ .port }}"
+    spec:
+      containers:
+        - name: {{ $.Chart.Name }}
+          # TODO: change with `appVersion`
+          image: prom/memcached-exporter:v0.11.3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: metrics
+              containerPort: 9150
+              protocol: TCP
+          args:
+            - "--memcached.address={{ .host }}:{{ .port }}"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "prometheus-memcached-exporter.short-name" $ }}-{{ (split "." .host)._0 }}-{{ .port }}
+  namespace: {{ $.Release.Namespace }}
+  labels:
+    {{- include "prometheus-memcached-exporter.labels" $ | nindent 4 }}
+    prometheus-exporter/host-and-port: "{{ .host }}_{{ .port }}"
+spec:
+  ports:
+    - port: 9151
+      targetPort: metrics
+      protocol: TCP
+      name: metrics
+  type: ClusterIP
+  selector:
+    {{- include "prometheus-memcached-exporter.selectorLabels" $ | nindent 4 }}
+{{- end }}

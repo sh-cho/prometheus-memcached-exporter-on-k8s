@@ -1,0 +1,6 @@
+# This is just example
+memcachedList:
+- host: "memcached1"
+  port: 33333
+- host: "memcached2"
+  port: 33334

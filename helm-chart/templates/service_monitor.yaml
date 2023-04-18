@@ -1,0 +1,19 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: memcached-exporter-service-monitor
+  namespace: {{ .Release.Namespace }}
+  labels:
+    name: memcached-exporter-service-monitor
+    exporter: memcached-exporter
+spec:
+  selector:
+    matchLabels:
+      prometheus-exporter/target: memcached
+  namespaceSelector:
+    any: true
+  endpoints:
+    - port: metrics
+      interval: 5s
+  targetLabels:
+    - prometheus-exporter/host-and-port

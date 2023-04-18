@@ -1,0 +1,20 @@
+apiVersion: monitoring.coreos.com/v1
+kind: Prometheus
+metadata:
+  name: prometheus
+  namespace: {{ .Release.Namespace }}
+spec:
+  serviceAccountName: prometheus
+  serviceMonitorNamespaceSelector: {}
+  serviceMonitorSelector:
+    matchLabels:
+      exporter: memcached-exporter
+  resources:
+    requests:
+      memory: 1000Mi
+  enableAdminAPI: false
+  # Just for test.
+  # TODO: remote write / read
+  enableRemoteWriteReceiver: true
+  remoteWrite:
+    - url: "http://localhost:9090/api/v1/write"
