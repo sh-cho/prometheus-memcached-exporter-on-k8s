@@ -29,6 +29,6 @@ curl -sL https://github.com/prometheus-operator/prometheus-operator/releases/dow
 
 (Prometheus, ServiceMonitor CRDs are needed.)
 
-4. install chart (check [readme](./helm-chart/README.md))
+4. install chart (check [helm-charts/README.md](./helm-chart/README.md))
 
 5. (TODO) visualize TSDB with thanos OR check with prometheus service (debug only)
