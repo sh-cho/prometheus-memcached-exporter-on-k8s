@@ -1,6 +1,6 @@
 # This is just example
 memcachedList:
-- host: "memcached1"
-  port: 33333
-- host: "memcached2"
-  port: 33334
+- host: "aaa-memcached.default.svc.cluster.local"
+  port: 11211
+- host: "bbb-memcached.default.svc.cluster.local"
+  port: 11211

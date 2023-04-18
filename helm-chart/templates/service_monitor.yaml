@@ -15,5 +15,12 @@ spec:
   endpoints:
     - port: metrics
       interval: 5s
+      # In order to keep timeseries, need to drop unwanted labels
+      relabelings:
+        - regex: (container|endpoint|namespace|pod|service)
+          action: labeldrop
+      metricRelabelings:
+        - regex: instance
+          action: labeldrop
   targetLabels:
     - prometheus-exporter/host-and-port
