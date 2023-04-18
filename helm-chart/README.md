@@ -1,6 +1,6 @@
 ## helm-chart
 
-Prometheus memcached exporter helm chart
+Prometheus memcached exporter (+service monitor) helm chart
 
 Provide value file with memcached list (host, port needed)
 
