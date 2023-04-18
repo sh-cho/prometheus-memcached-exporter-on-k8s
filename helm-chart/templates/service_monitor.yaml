@@ -17,7 +17,7 @@ spec:
       interval: 5s
       # In order to keep timeseries, need to drop unwanted labels
       relabelings:
-        - regex: (container|endpoint|namespace|pod|service)
+        - regex: (container|endpoint|namespace|pod|service|job|prometheus_replica)
           action: labeldrop
       metricRelabelings:
         - regex: instance
