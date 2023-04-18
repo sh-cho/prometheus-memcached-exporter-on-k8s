@@ -1,6 +1,6 @@
 # prometheus-memcached-exporter-on-k8s
 
-(WIP)
+
 
 ## test locally
 
@@ -32,3 +32,18 @@ curl -sL https://github.com/prometheus-operator/prometheus-operator/releases/dow
 4. install chart (check [helm-charts/README.md](./helm-chart/README.md))
 
 5. (TODO) visualize TSDB with thanos OR check with prometheus service (debug only)
+
+
+## examples
+
+<img width="848" alt="memcached exporter metrics page" src="https://user-images.githubusercontent.com/11611397/232852501-c9ae1257-9f35-4f41-b1c0-e88f3686c7a2.png">
+
+Memcached exporter metrics page (check with port-forward)
+
+<img width="2560" alt="test2-min" src="https://user-images.githubusercontent.com/11611397/232852639-e76a8ec1-485b-42e1-8a0a-6ef8d11a0a2e.png">
+
+> **Note**
+>
+> In order to prevent duplicated metric and make time-series with single tag,
+> - remove all unrelated tags, other than your specific target tag
+> - remove additional "prometheus", "prometheus_replica" tag with prometheus setting (check this [commit](https://github.com/sh-cho/prometheus-memcached-exporter-on-k8s/commit/f1c58949485da4050bf4005da30935aebefaeb72))
