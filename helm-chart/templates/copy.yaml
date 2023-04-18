@@ -15,7 +15,7 @@ spec:
     metadata:
       labels:
         {{- include "prometheus-memcached-exporter.labels" $ | nindent 8 }}
-        # prometheus-exporter/host-and-port: "{{ .host }}_{{ .port }}"
+        prometheus-exporter-0/host-and-port: "{{ .host }}_{{ .port }}"
     spec:
       containers:
         - name: {{ $.Chart.Name }}
@@ -46,4 +46,5 @@ spec:
   type: ClusterIP
   selector:
     {{- include "prometheus-memcached-exporter.selectorLabels" $ | nindent 4 }}
+    prometheus-exporter-0/host-and-port: "{{ .host }}_{{ .port }}"
 {{- end }}
