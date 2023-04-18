@@ -13,6 +13,9 @@ spec:
     requests:
       memory: 1000Mi
   enableAdminAPI: false
+  # dedup
+  replicaExternalLabelName: ""
+  prometheusExternalLabelName: ""
   # Just for test.
   # TODO: remote write / read
   enableRemoteWriteReceiver: true

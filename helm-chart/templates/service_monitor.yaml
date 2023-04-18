@@ -20,7 +20,7 @@ spec:
         - regex: (container|endpoint|namespace|pod|service)
           action: labeldrop
       metricRelabelings:
-        - regex: (instance|prometheus_replica|job)
+        - regex: (instance|job)
           action: labeldrop
   targetLabels:
     - prometheus-exporter/host-and-port
