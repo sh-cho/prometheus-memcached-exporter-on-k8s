@@ -51,5 +51,9 @@ Memcached exporter metrics page (check with port-forward)
 > - remove additional "prometheus", "prometheus_replica" tag with prometheus setting (check this [commit](https://github.com/sh-cho/prometheus-memcached-exporter-on-k8s/commit/f1c58949485da4050bf4005da30935aebefaeb72))
 
 ## Todos
+- [ ] Apply the following repositores
+  - [bitnami-labs/readme-generator-for-helm](https://github.com/bitnami-labs/readme-generator-for-helm)
+  - [helm/chart-releaser](https://github.com/helm/chart-releaser)
+- [ ] CI (lint, dry-run, etc..)
 - [ ] Optional remote read/write
 - [ ] Use proper tag names (or rewrite)
