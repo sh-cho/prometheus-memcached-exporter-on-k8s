@@ -1,6 +1,8 @@
 # prometheus-memcached-exporter-on-k8s
 
-
+> **Warn**
+>
+> This repository is for demo purposes only and should be modified for production use.
 
 ## test locally
 
@@ -47,3 +49,7 @@ Memcached exporter metrics page (check with port-forward)
 > In order to prevent duplicated metric and make time-series with single tag,
 > - remove all unrelated tags, other than your specific target tag
 > - remove additional "prometheus", "prometheus_replica" tag with prometheus setting (check this [commit](https://github.com/sh-cho/prometheus-memcached-exporter-on-k8s/commit/f1c58949485da4050bf4005da30935aebefaeb72))
+
+## Todos
+- [ ] Optional remote read/write
+- [ ] Use proper tag names (or rewrite)
