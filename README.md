@@ -1,6 +1,6 @@
 # prometheus-memcached-exporter-on-k8s
 
-> **Warn**
+> **Warning**
 >
 > This repository is for demo purposes only and should be modified for production use.
 
